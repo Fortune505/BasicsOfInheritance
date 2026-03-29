@@ -64,7 +64,7 @@ namespace BasicsOfInheritance
 
             txtInfo.Text = "Сок\tГазировка\tАлкоголь";
             txtInfo.Text += "\n";
-            txtInfo.Text += String.Format("{0}\t{1}\t{2}", juiceCount, sodaCount, alcoholCount);
+            txtInfo.Text += String.Format("{0}\t{1}\t\t{2}", juiceCount, sodaCount, alcoholCount);
         }
 
         private void btnGet_Click(object sender, EventArgs e)

@@ -59,7 +59,20 @@ namespace BasicsOfInheritance
             var str = "Я алкаголь\n";
             str += base.GetInfo();
             str += String.Format("\nКрепость: {0}", this.Fortress);
-            str += String.Format("\nТип: {0}", this.type.ToString());
+            string translationType = "";
+            switch (this.type)
+            {
+                case AlcoholType.fermented:
+                    translationType = "Ферментированный";
+                    break;
+                case AlcoholType.distillate:
+                    translationType = "Дистиллят";
+                    break;
+                case AlcoholType.rectifiedSpirit:
+                    translationType = "Ректифицированный спирт";
+                    break;
+            }
+            str += String.Format("\nТип: {0}", translationType);
             return str;
         }
     }

@@ -43,6 +43,7 @@ namespace BasicsOfInheritance
             int sodaCount = 0;
             int alcoholCount = 0;
 
+
             string queueText = "Очередь ------...-..-..-..-\n";
 
             for (int i = 0; i < this.drinksList.Count; ++i)

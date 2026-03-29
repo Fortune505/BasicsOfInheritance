@@ -43,41 +43,46 @@ namespace BasicsOfInheritance
             int sodaCount = 0;
             int alcoholCount = 0;
 
-            foreach (var drink in this.drinksList)
+            string queueText = "Очередь ------...-..-..-..-\n";
+
+            for (int i = 0; i < this.drinksList.Count; ++i)
             {
+                var drink = this.drinksList[i];
+                string drinkName = "";
+
                 if (drink is Juice)
                 {
                     juiceCount += 1;
+                    drinkName = "Сок";
                 }
-                else if (drink is Soda)
-                {
-
+                else if (drink is Soda) {
                     sodaCount += 1;
-
-                }
-                else if (drink is Alcohol) { 
-                
+                    drinkName = "Газировка";
+                } else if (drink is Alcohol)
+                {
                     alcoholCount += 1;
-
+                    drinkName = "Алкоголь";
                 }
+                queueText += String.Format("{0}. {1}\n", i + 1, drinkName);
             }
 
             txtInfo.Text = "Сок\tГазировка\tАлкоголь";
             txtInfo.Text += "\n";
             txtInfo.Text += String.Format("{0}\t{1}\t\t{2}", juiceCount, sodaCount, alcoholCount);
+            txtOut.Text = queueText;
         }
 
         private void btnGet_Click(object sender, EventArgs e)
         {
             if (this.drinksList.Count == 0) {
-                txtOut.Text = "Пусто АААААА МОИ ШЕКЕЛИ";
+                MessageBox.Show("Пусто АААААА МОИ ШЕКЕЛИ", "Ошибка автомата паникуйте", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
 
             var drink = this.drinksList[0];
             this.drinksList.RemoveAt(0);
 
-            txtOut.Text = drink.GetInfo();
+            MessageBox.Show(drink.GetInfo(), "Выдын напиток", MessageBoxButtons.OK, MessageBoxIcon.Information);
             ShowInfo();
         }
 

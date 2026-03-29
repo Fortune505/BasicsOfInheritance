@@ -14,24 +14,23 @@ namespace BasicsOfInheritance
         {
             this.drinksList.Clear();
             var rnd = new Random();
+            string[] fruits = { "Апельсин", "Яблоко", "Груша", "Виноград" };
+
             for (var i=0; i<10; ++i)
             {
                 switch(rnd.Next() % 3)
                 {
                     case 0:
-                        this.drinksList.Add(new Juice {
-                            Volume = rnd.Next() % 6
-                        });
+                        this.drinksList.Add(new Juice { Volume = rnd.Next(1, 3), FruitsUsed = fruits[rnd.Next(fruits.Length)],
+                        PresenceOfPulp = rnd.Next() % 2 == 0});
                         break;
                     case 1:
-                        this.drinksList.Add(new Soda {
-                            Volume = rnd.Next() % 6
-                        });
+                        this.drinksList.Add(new Soda { Volume = rnd.Next(1, 3), NumberOfBubbles = rnd.Next(100, 5000),
+                            view = (SodaView)(rnd.Next() % 2)});
                         break;
                     case 2:
-                        this.drinksList.Add(new Alcohol {
-                            Volume = rnd.Next() % 6
-                        });
+                        this.drinksList.Add(new Alcohol {Volume = rnd.Next(1, 3), Fortress = rnd.Next(5, 100),
+                            type = (AlcoholType)(rnd.Next() % 3)});
                         break;
                 }
             }
@@ -63,7 +62,7 @@ namespace BasicsOfInheritance
                 }
             }
 
-            txtInfo.Text = "Сок\tГазировка\tАлкаголь";
+            txtInfo.Text = "Сок\tГазировка\tАлкоголь";
             txtInfo.Text += "\n";
             txtInfo.Text += String.Format("{0}\t{1}\t{2}", juiceCount, sodaCount, alcoholCount);
         }

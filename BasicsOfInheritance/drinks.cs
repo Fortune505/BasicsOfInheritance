@@ -58,7 +58,7 @@ namespace BasicsOfInheritance
         {
             var str = "Я алкаголь\n";
             str += base.GetInfo();
-            str += String.Format("\nКрепость: {0}%", this.Fortress);
+            str += String.Format("\nКрепость: {0}", this.Fortress);
             str += String.Format("\nТип: {0}", this.type.ToString());
             return str;
         }
